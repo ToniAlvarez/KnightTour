@@ -14,16 +14,14 @@ class SquarePanel extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        Dimension d = super.getPreferredSize();
-        Container c = getParent();
-        if (c != null) {
-            d = c.getSize();
+        if (getParent() != null) {
+            Dimension d = getParent().getSize();
+            int w = (int) d.getWidth();
+            int h = (int) d.getHeight();
+            int s = (Math.min(w, h));
+            return new Dimension(s, s);
         } else {
-            return new Dimension(10, 10);
+            return new Dimension(100, 100);
         }
-        int w = (int) d.getWidth();
-        int h = (int) d.getHeight();
-        int s = (w < h ? w : h);
-        return new Dimension(s, s);
     }
 }
